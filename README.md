@@ -13,3 +13,4 @@ For example, Server 1 contains a file with the value 10, it will increment it to
 * __Automate all the things__ -- Use as much automation as you can, just to make it easy to deploy from scratch and avoid unnecessary manual steps.
 * __Team Power__ -- Work together, assign specific task to each other, make sure it's clear on who is working on what.
 * __Coordination is key__ -- Github is always a good place to save your code as a team, decide between yourselves who will own the team main repository and giving you access to create your own branch and submit pull requests.
+--trial-
