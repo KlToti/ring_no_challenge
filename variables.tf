@@ -1,3 +1,7 @@
+variable region {
+    description = "region name"
+}
+
 variable bucket_name {
     description = "bucket name as ta-terraform-tfstates- + account id"
 }
@@ -23,4 +27,12 @@ variable "sns_name" {
 variable "account_id" {
         description = "My Accout Number"
         default = "<you-account-number-here>"
+}
+
+variable aws_access_key_id{
+        description = " access key id"
+}
+
+variable aws_secret_access_key{
+        description = " secret access key"
 }
