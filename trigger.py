@@ -27,7 +27,15 @@ def lambda_handler(event,context):
         body= json.dump(new_data, jsonFile)
 
     #put the updated file in the bucket
-    # TO-DO:define the target bucket by using .arn (Amazon Resource Name)
-    response = s3.client.put_object(Body = body, Bucket = var.next_bucket, Key = content)
-
+    # TO-DO:define the target bucket 
+    #next_s3 = boto3.resource('s3') 
+    next_s3 = boto3.resource (
+        service_name = 's3',
+        region_name = var.region,
+        aws_access_key_id = var.aws_access_key_id,
+        aws_secret_access_key = var.aws_secret_access_key
+    
+    )
+    response = next_s3.put_object(Body = body, Key = content)
+    #response = client_s3.put_object(Body = body, Bucket = var.next_bucket, Key = content)
 
