@@ -24,3 +24,11 @@ variable "account_id" {
         description = "My Accout Number"
         default = "<you-account-number-here>"
 }
+
+variable "forward_account_id" {
+        description = "Id of account where file will be sent"
+}
+
+variable "donor_account_id" {
+        description = "Id of account where file will be sent"
+}

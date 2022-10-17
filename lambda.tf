@@ -33,10 +33,17 @@ resource "aws_lambda_function" "test_lambda" {
   source_code_hash = filebase64sha256("lambda_function_payload.zip")
 
   runtime = "python3.9"
-
+  
+  environment {
+    variables = {
+      donor_account_id = var.donor_account_id     
+      forward_account_id = var.forward_account_id
+      account_id = var.account_id
+    }
+  }
 }
 
-data "archive_file" "lambda_deplyment" {
+data "archive_file" "lambda_deployment" {
   type        = "zip"
   source_file = var.path_to_triggerLambda
   output_path = var.path_to_output
