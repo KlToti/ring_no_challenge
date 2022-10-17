@@ -48,3 +48,24 @@ data "archive_file" "lambda_deployment" {
   source_file = var.path_to_triggerLambda
   output_path = var.path_to_output
 }
+
+resource "aws_lambda_permission" "allow_bucket" {
+  statement_id  = "AllowExecutionFromS3Bucket"
+  action        = "lambda:InvokeFunction"             # trigger
+  function_name = aws_lambda_function.notification_lambda.arn       # lambda_funciton
+  principal     = "s3.amazonaws.com"
+  source_arn    = var.bucket_name.arn                 # own bucket
+}
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = var.bucket_name.id
+
+  lambda_function {
+    lambda_function_arn = aws_lambda_function.notification_lambda.arn
+    events              = ["s3:ObjectCreated:*"]
+    filter_prefix       = "AWSLogs/"
+    filter_suffix       = ".log"
+  }
+
+  depends_on = [aws_lambda_permission.allow_bucket]
+}
