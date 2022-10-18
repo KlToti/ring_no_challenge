@@ -4,7 +4,7 @@
 #4.modify it
 #5.put it in the bucket
 
-resource "aws_s3_bucket" "ring_bucket" {
+data "aws_s3_bucket" "project_bucket" {
   bucket =  var.bucket_name
 
     #metadata
@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "ring_bucket" {
 }
 
 resource "aws_s3_bucket_versioning" "version_my_bucket" {
-  bucket = aws_s3_bucket.ring_bucket.id
+  bucket = aws_s3_bucket.project_bucket.id
 
   versioning_configuration {
     status = "Disabled"                       # disabled to allow versioning
