@@ -10,7 +10,7 @@ account_id = os.getenv.account_id
 
 #bucket names
 bucket_name = f'{account_id}-ring-no-challange-talent-academy-project-oct-2022'
-forward_bucket_name = f'{account_id}-ring-no-challange-talent-academy-project-oct-2022'
+forward_bucket_name = f'{forward_account_id}-ring-no-challange-talent-academy-project-oct-2022'
 
 #get public ip address from my account with tag name
 def get_public_ip():
