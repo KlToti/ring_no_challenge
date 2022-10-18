@@ -3,6 +3,7 @@ import boto3
 import urllib
 import requests
 import os
+import time
 
 ### environment variables
 forward_account_id = os.getenv.forward_account_id
@@ -55,7 +56,7 @@ def lambda_handler(event,context):
     #     region_name = var.region,
     #     aws_access_key_id = var.aws_access_key_id,
     #     aws_secret_access_key = var.aws_secret_access_key
-    
+    time.sleep(10)
     #send file to my webserver
     public_ip = str(get_public_ip())
     resp = requests.post(public_ip, json=new_data)
