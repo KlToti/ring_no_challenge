@@ -1,3 +1,7 @@
+#data "aws_iam_role" "iam_for_lambda" {
+#  name = "iam_for_lambda"
+#}
+
 resource "aws_iam_role" "iam_for_lambda" {
   name = "iam_for_lambda"
 
@@ -17,11 +21,39 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
+resource "aws_iam_policy" "lambda_role_policy" {
+  name        = "lambda-role"
+  description = "policy for lambda's role"
+  policy      = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "${data.aws_s3_bucket.my_bucket.arn}/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": ["ec2:DescribeInstances"],
+            "Resource": "*"
+        }
+      ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_role_attach" {
+  role       = data.aws_iam_role.iam_for_lambda.name
+  policy_arn = aws_iam_policy.lambda_role_policy.arn
+}
 
 data "aws_s3_bucket" "my_bucket" {
   bucket = var.s3_bucket_name
 }
-
 
 data "archive_file" "lambda_deployment" {
   type        = "zip"
@@ -38,18 +70,19 @@ resource "aws_lambda_permission" "allow_bucket" {
 }
 
 resource "aws_lambda_function" "func" {
-  filename      = data.archive_file.lambda_deployment.output_path
-  function_name = "trigger"
-  role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "trigger.lambda_handler"
+  filename         = data.archive_file.lambda_deployment.output_path
+  function_name    = "trigger"
+  role             = data.aws_iam_role.iam_for_lambda.arn
+  handler          = "trigger.lambda_handler"
   source_code_hash = data.archive_file.lambda_deployment.output_base64sha256
-  runtime       = "python3.9"
+  runtime          = "python3.9"
+  timeout          = 60
 
   environment {
     variables = {
-      donor_account_id = var.donor_account_id    
+      donor_account_id   = var.donor_account_id
       forward_account_id = var.forward_account_id
-      account_id = var.account_id
+      account_id         = var.account_id
     }
   }
 }
