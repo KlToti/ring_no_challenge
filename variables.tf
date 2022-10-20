@@ -5,18 +5,18 @@ variable "s3_bucket_name" {
 
 variable "donor_account_id" {
   description = "previous person's id"
-  type        = number
+  type        = string
 }
 
 
 variable "forward_account_id" {
   description = "following person's id"
-  type        = number
+  type        = string
 }
 
 variable "account_id" {
   description = "your id"
-  type        = number
+  type        = string
 }
 
 variable "forward_bucket_name" {

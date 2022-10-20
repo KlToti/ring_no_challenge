@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "allow_access_to_s3_document" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::247548036690:role/iam_for_lambda"]
+      identifiers = ["arn:aws:iam::041308375526:role/iam_for_lambda"]
       #identifiers = ["$arn:aws:iam::${var.donor_account_id}:role/iam_for_lambda"]        # allows donor_account_id to put files in s3
     }
     actions = [

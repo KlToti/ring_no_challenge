@@ -35,7 +35,7 @@ resource "aws_iam_policy" "lambda_role_policy" {
                 "s3:PutObject",
                 "s3:PutObjectAcl"
             ],
-            "Resource": ["$arn:aws:s3:::${var.forward_bucket_name}","$arn:aws:s3:::${var.forward_bucket_name}/*"]
+            "Resource": ["arn:aws:s3:::${var.forward_bucket_name}","arn:aws:s3:::${var.forward_bucket_name}/*"]
         },
         {
             "Effect": "Allow",

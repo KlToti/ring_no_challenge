@@ -8,8 +8,6 @@ import time
 ### environment variables
 forward_account_id = os.environ.get("forward_account_id")
 account_id = os.environ.get("account_id")
-#forward_account_id = str(247548036690)
-#account_id = str(247548036690)
 
 #bucket names
 bucket_name = f'{account_id}-ring-no-challange-talent-academy-project-oct-2022'
