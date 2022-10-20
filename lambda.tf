@@ -47,7 +47,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_role_attach" {
-  role       = data.aws_iam_role.iam_for_lambda.name
+  role       = resource.aws_iam_role.iam_for_lambda.name
   policy_arn = aws_iam_policy.lambda_role_policy.arn
 }
 
@@ -72,7 +72,7 @@ resource "aws_lambda_permission" "allow_bucket" {
 resource "aws_lambda_function" "func" {
   filename         = data.archive_file.lambda_deployment.output_path
   function_name    = "trigger"
-  role             = data.aws_iam_role.iam_for_lambda.arn
+  role             = resource.aws_iam_role.iam_for_lambda.arn
   handler          = "trigger.lambda_handler"
   source_code_hash = data.archive_file.lambda_deployment.output_base64sha256
   runtime          = "python3.9"

@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "allow_access_from_another_account" {
     effect = "Allow"
     principals {
       type        = "AWS"
-      identifiers = [data.aws_iam_role.iam_for_lambda.arn]
+      identifiers = [resource.aws_iam_role.iam_for_lambda.arn]
     }
     actions   = ["s3:*"]
     resources = ["${data.aws_s3_bucket.my_bucket.arn}/*"]
