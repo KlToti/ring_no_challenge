@@ -18,3 +18,8 @@ variable "account_id" {
   description = "your id"
   type        = number
 }
+
+variable "forward_bucket_name" {
+  description = "forward_bucket_name"
+  type = string
+}

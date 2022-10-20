@@ -31,7 +31,7 @@ def lambda_handler(event,context):
     print(type(data), data)
     #assume the value has 'number' as a key in the json file
     
-    if data['number']< data['max_value']:
+    if data['number']< max_value:
         value = data['number']
         #integrate the fuction by incrementing it by one     
         new_value = value +1

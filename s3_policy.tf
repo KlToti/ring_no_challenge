@@ -8,7 +8,8 @@ data "aws_iam_policy_document" "allow_access_to_s3_document" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = [var.donor_account_id]                            # allows donor_account_id to put files in s3
+      identifiers = ["arn:aws:iam::247548036690:role/iam_for_lambda"]
+      #identifiers = ["$arn:aws:iam::${var.donor_account_id}:role/iam_for_lambda"]        # allows donor_account_id to put files in s3
     }
     actions = [
       "s3:PutObject",
@@ -31,14 +32,14 @@ data "aws_iam_policy_document" "allow_access_to_s3_document" {
   }
 
 
-    statement {
+    #statement {
 
-    effect = "Allow"
-    principals {
-      type        = "AWS"
-      identifiers = [aws_iam_role.iam_for_webserver.arn]                  # allows ec2 to copy files from s3
-    }
-    actions   = ["s3:GetObject"]
-    resources = ["${data.aws_s3_bucket.my_bucket.arn}/*"]
-  }
+    #effect = "Allow"
+    #principals {
+      #type        = "AWS"
+     #identifiers = [aws_iam_role.iam_for_webserver.arn]                  # allows ec2 to copy files from s3
+    #}
+    #actions   = ["s3:GetObject"]
+    #resources = ["${data.aws_s3_bucket.my_bucket.arn}/*"]
+  #}
 }
