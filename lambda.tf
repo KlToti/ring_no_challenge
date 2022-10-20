@@ -91,6 +91,7 @@ resource "aws_lambda_function" "func" {
   }
 }
 
+
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = data.aws_s3_bucket.my_bucket.id
 

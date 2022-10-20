@@ -30,6 +30,7 @@ data "aws_iam_policy_document" "allow_access_to_s3_document" {
     resources = ["${data.aws_s3_bucket.my_bucket.arn}/*"]
   }
 
+
     statement {
 
     effect = "Allow"
