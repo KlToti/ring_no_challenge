@@ -21,6 +21,10 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
+locals{
+  FORWARD_BUCKET_NAME = format("%s/%s",var.forward_account_id,"-ring-no-challange-talent-academy-project-oct-2022")
+}
+
 resource "aws_iam_policy" "lambda_role_policy" {
   name        = "lambda-role"
   description = "policy for lambda's role"
@@ -34,7 +38,7 @@ resource "aws_iam_policy" "lambda_role_policy" {
                 "s3:PutObject",
                 "s3:PutObjectAcl"
             ],
-            "Resource": "${data.aws_s3_bucket.my_bucket.arn}/*"
+            "Resource": ["$arn:aws:s3:::FORWARD_BUCKET_NAME/*"]
         },
         {
             "Effect": "Allow",
@@ -86,6 +90,7 @@ resource "aws_lambda_function" "func" {
     }
   }
 }
+
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = data.aws_s3_bucket.my_bucket.id
