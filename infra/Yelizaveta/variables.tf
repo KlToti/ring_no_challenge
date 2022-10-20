@@ -29,10 +29,6 @@ variable "public_subnet_name" {
   description = "Name of Public Subnet"
 }
 
-variable "private_subnet_name" {
-  description = "Name of private Subnet"
-}
-
 variable "s3_bucket_name" {
   description = "S3 Bucket for Backend terraform.tf.states"
   type = string

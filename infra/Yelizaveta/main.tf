@@ -23,14 +23,6 @@ data "aws_subnet" "public_subnet" {
   }
 }
 
-data "aws_subnet" "private_subnet" {
-
-  filter {
-    name   = "tag:Name"
-    values = [var.private_subnet_name]
-  }
-}
-
 module "s3_project_bucket" {
   source = "./modules/S3"
   s3_bucket_name = var.s3_bucket_name
@@ -47,10 +39,6 @@ module "sg" {
     Name = "${var.projectname}_public_sg"
     Project = var.projectname
   }
-  private_sg_tags = {
-    Name = "${var.projectname}_private_sg"
-    Project = var.projectname
-  }
 }
 
 module "webserver" {
@@ -61,18 +49,6 @@ module "webserver" {
   keypair_name = var.keypair_name
   tags = {
     Name = "${var.projectname}_webserver"
-    Project = var.projectname
-  }
-}
-
-module "private_server" {
-  source = "./modules/EC2_private_server"
-  ami = data.aws_ami.ubuntu_image.id
-  private_subnet_id = data.aws_subnet.private_subnet.id
-  private_sg_id = module.sg.private_sg_id
-  keypair_name = var.keypair_name
-  tags = {
-    Name = "${var.projectname}_private_server"
     Project = var.projectname
   }
 }
