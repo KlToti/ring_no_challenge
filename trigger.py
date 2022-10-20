@@ -36,13 +36,15 @@ def lambda_handler(event,context):
     account= sts.get_caller_identity()["Account"]
     message = 'A new file was edit!'
 
-    response = s3_client.get_object(Bucket=bucket_name,Key = key)
+    response = s3_client.get_object(Bucket=bucket_name,Key=key)
 
     content = response["Body"].read().decode()
+    print(type(content), content)
     data = json.loads(content)
     print(type(data), data)
     #assume the value has 'number' as a key in the json file
-    if data['max_value']< 20:
+    
+    if data['number']< data['max_value']:
         value = data['number']
     #integrate the fuction by incrementing it by one     
         new_value = value +1
@@ -55,9 +57,9 @@ def lambda_handler(event,context):
 
         print(f'New data to send:" {data}')
     
-        with open(new_jsonFile,"w") as jsonFile:
-            body=json.dumps(data)
-            jsonFile.write(body)
+        #with open(new_jsonFile,"w") as jsonFile:
+        body=json.dumps(data).encode('utf-8')       # no longer needed to put in a folder, need in bytes
+        #    jsonFile.write(body)
         print('Data should be in file')
     #put the updated file in the bucket
     # TO-DO:define the target bucket 
@@ -73,7 +75,7 @@ def lambda_handler(event,context):
         print('I am back again')
     #send file to my webserver
         send_to_server(body)
-        s3_client.upload_file(new_jsonFile, forward_bucket_name, "testX.json")
+        s3_client.put_object(Body=body, Bucket=forward_bucket_name, Key="test.json")
         return f"Uploaded file to {forward_account_id}"
     else:
         return f"Maximum number reached. The value {data['number']} was reached. Transferring stopped."
