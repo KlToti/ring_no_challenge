@@ -6,10 +6,55 @@ As a team, you should coordinate to deploy a server in each of your individual a
 
 For example, Server 1 contains a file with the value 10, it will increment it to 11 and send that file to Server 2. Server 2 will increment the valeur in the file to 12 and send it to Server 3, and so on.
 
-## Recommendation
-* __Thinking outside the box__ -- the idea is to have a value incremented on each server and passing that value to the other servers. Try to find an interesting way to communicate between each server.
-* __Security is always important__ -- Make sure to keep security as a priority when working over the network and sharing information only between trusted servers.
-* __Be creative in your delivery__ -- You can output the file containing the number to the terminal (through ssh) in an informative way, showing the server name and value or may be have a website that will display these information.
-* __Automate all the things__ -- Use as much automation as you can, just to make it easy to deploy from scratch and avoid unnecessary manual steps.
-* __Team Power__ -- Work together, assign specific task to each other, make sure it's clear on who is working on what.
-* __Coordination is key__ -- Github is always a good place to save your code as a team, decide between yourselves who will own the team main repository and giving you access to create your own branch and submit pull requests.
+
+# Team work
+
+Project tasks were distributed over 5 members of the group. 
+To deliver tasks [Trello app](https://trello.com/b/ufyjRrXX/ring-number-challenge) was used and [Lucidcharts](https://lucid.app/lucidchart/69dfa177-b7da-431e-8789-5d5189e043ab/edit?invitationId=inv_6e2d77ba-a32e-4c27-9828-61600a988c29&page=0_0#) and Miro Boardto visualize our solution and brainstorm.
+[Github](https://github.com/KlToti/ring_no_challenge) was crucial to deliver and maintain code.
+
+# Goals
+* __Security__
+* __Think outside the box__ 
+
+
+# Approach 
+
+
+![Alt text](https://github.com/KlToti/ring_no_challenge/blob/main/image.png)
+
+
+## Resources 
+
+Infrastructure can be found [here](https://github.com/KlToti/ring_no_challenge/tree/yeli/infra/Yelizaveta) 
+
+| Name | Type |
+|------|------|
+| [aws_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_internet_gateway.igw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
+| [aws_nat_gateway.nat_gw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway) | resource |
+| [aws_route_table.internet_route_table](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table) | resource |
+| [aws_subnet.public_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
+| [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | data source |
+
+
+## Inputs
+
+| Name | Description | Type |
+|------|-------------|------|
+| <a name="forward_bucket_id"></a> [forward\_bucket\_id](#input\_project\_name) | next person's AWS ID | `string` | 
+| <a name="donor_bucket_id"></a> [donor\_bucket\_id](#donor\_project\_name) | previous person's ID | `string` | 
+| <a name="account_id"></a> [account\_id](#account\_id\_) | user's account ID | `string` | 
+
+
+# Challenges
+
+* Roles and policies
+
+# Further improvements
+
+* Improve efficiency : 5 instances and 1 bucket __or__ 1 instance and 5 bucket
+* Automation
+
+
+
