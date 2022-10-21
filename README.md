@@ -10,7 +10,7 @@ For example, Server 1 contains a file with the value 10, it will increment it to
 # Team work
 
 Project tasks were distributed over 5 members of the group. 
-To deliver tasks [Trello app](https://trello.com/b/ufyjRrXX/ring-number-challenge) was used and [Lucidcharts](https://lucid.app/lucidchart/69dfa177-b7da-431e-8789-5d5189e043ab/edit?invitationId=inv_6e2d77ba-a32e-4c27-9828-61600a988c29&page=0_0#) and Miro Boardto visualize our solution and brainstorm.
+To deliver tasks [Trello app](https://trello.com/b/ufyjRrXX/ring-number-challenge) was used and [Lucidcharts](https://lucid.app/lucidchart/69dfa177-b7da-431e-8789-5d5189e043ab/edit?invitationId=inv_6e2d77ba-a32e-4c27-9828-61600a988c29&page=0_0#) and Miro Board to visualize our solution and brainstorm.
 [Github](https://github.com/KlToti/ring_no_challenge) was crucial to deliver and maintain code.
 
 # Goals
