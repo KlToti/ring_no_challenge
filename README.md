@@ -21,7 +21,7 @@ To deliver tasks [Trello app](https://trello.com/b/ufyjRrXX/ring-number-challeng
 # Approach 
 
 
-![image](https://user-images.githubusercontent.com/79509008/197161299-e62bc65c-f076-4afe-aa5e-513e11c5d7ff.png)
+![image](https://user-images.githubusercontent.com/79509008/197162385-a74b231b-9e1d-4f1e-a6a3-95acfd9c75fb.png)
 
 
 ## Resources 
