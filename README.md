@@ -21,7 +21,7 @@ To deliver tasks [Trello app](https://trello.com/b/ufyjRrXX/ring-number-challeng
 # Approach 
 
 
-![Alt text](https://github.com/KlToti/ring_no_challenge/blob/main/image.png)
+![image](https://user-images.githubusercontent.com/79509008/197161299-e62bc65c-f076-4afe-aa5e-513e11c5d7ff.png)
 
 
 ## Resources 
