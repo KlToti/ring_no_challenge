@@ -50,7 +50,7 @@ Infrastructure can be found [here](https://github.com/KlToti/ring_no_challenge/t
 # Challenges
 
 * Roles and policies
-*![image](https://user-images.githubusercontent.com/79509008/197156815-020cb3b0-7567-4a2e-9754-ab624d507b8d.png)
+*![image](https://user-images.githubusercontent.com/79509008/197157044-ffbf57ea-f0d3-458b-9eaa-b38a9cb1bd07.png)
 
 
 # Further improvements
